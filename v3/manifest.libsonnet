@@ -11,12 +11,11 @@ local resource = {
 {
   new(
     name,
-    keyword,
     description,
     version,
     service_worker,
   ):: (
-    manifest_common.new(name, keyword, description, version)
+    manifest_common.new(name, description, version)
   ) {
     local it = self,
     _action:: {},

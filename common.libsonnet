@@ -18,7 +18,6 @@ local content_script = {
   */
   new(
     name,
-    keyword,
     description,
     version,
   ):: {
@@ -27,9 +26,6 @@ local content_script = {
     name: name,
     description: description,
     version: version,
-    omnibox: {
-      keyword: keyword,
-    },
     icons: self._icons,
     permissions: [],
     content_scripts: [],
@@ -38,6 +34,11 @@ local content_script = {
     },
     setOptionsPage(page):: self + {
       [if std.length(page) > 0 then 'options_page' else null]: page,
+    },
+    setOmniboxKeyword(keyword):: self + {
+      [if std.length(keyword) > 0 then 'omnibox' else null]: {
+        keyword: keyword,
+      },
     },
     addPermissions(permission):: self + {
       permissions+: if std.isArray(permission) then permission else [permission],

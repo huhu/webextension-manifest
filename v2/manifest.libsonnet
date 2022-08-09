@@ -3,11 +3,10 @@ local manifest_common = import '../common.libsonnet';
 {
   new(
     name,
-    keyword,
     description,
     version
   ):: (
-    manifest_common.new(name, keyword, description, version)
+    manifest_common.new(name, description, version)
   ) {
     local it = self,
     _background_scripts:: [],
